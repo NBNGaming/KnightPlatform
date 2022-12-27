@@ -594,6 +594,13 @@ public class PlayerController : MonoBehaviour
         counterMp.text = mpPlayer.ToString() + "/" + mpPlayerMax.ToString();
         sliderHp.value = hpPlayer;
         sliderMp.value = mpPlayer;
+        
+        if (hpPlayer <= 0)
+        {
+            _adListener.enabled = false;
+            DeadMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
